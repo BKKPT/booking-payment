@@ -46,6 +46,7 @@
       border-radius:12px;
       font-weight:bold;
       margin-top:20px;
+      cursor:pointer;
     }
 
     img{
@@ -86,9 +87,17 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/QR_code_example.svg">
 
-<input type="file">
+<div class="item">
+<div class="label">Upload Payment Slip</div>
+<input type="file" id="slip">
+</div>
 
-<button>
+<button onclick="uploadSlip()">
+Upload Slip
+</button>
+
+</div>
+
 <script>
 
 async function uploadSlip() {
@@ -131,10 +140,6 @@ async function uploadSlip() {
 }
 
 </script>
-  
-</button>
-
-</div>
 
 </body>
 </html>

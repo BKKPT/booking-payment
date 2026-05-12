@@ -89,7 +89,49 @@
 <input type="file">
 
 <button>
-Upload Slip
+<script>
+
+async function uploadSlip() {
+
+  const fileInput = document.getElementById("slip");
+
+  if (!fileInput.files.length) {
+    alert("Please upload payment slip");
+    return;
+  }
+
+  const file = fileInput.files[0];
+
+  const reader = new FileReader();
+
+  reader.onload = async function () {
+
+    const base64 = reader.result.split(",")[1];
+
+    const response = await fetch(
+      "YOUR_GAS_WEBAPP_URL",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          bookingId: "VB-2026-001",
+          file: base64,
+          fileName: file.name,
+        }),
+      }
+    );
+
+    const result = await response.text();
+
+    alert("Upload Success");
+
+    console.log(result);
+  };
+
+  reader.readAsDataURL(file);
+}
+
+</script>
+  
 </button>
 
 </div>
